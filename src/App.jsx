@@ -1,33 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
+import Navbar from './components/Navbar'
+import News from './components/News'
+import LoadingBar from 'react-top-loading-bar'
+import {BrowserRouter as Router,Routes,Route,Link} from 'react-router-dom'
+import { useState } from 'react'
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const[progress,setProgress]=useState(1)
+  const apiKey=import.meta.env.VITE_REACT_NEWSAPI_KEY
+  //const apiKey = import.meta.env.VITE_REACT_APP_NEWSAPI_KEY
+  //console.log('API Key:', apiKey);
+  
+ 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <Router>
+      <Navbar></Navbar>
+      <LoadingBar
+      height={3}
+      color='#f11946'
+      progress={progress}/>
+      <Routes>
+     <Route exact path='/' element={<News setProgress={setProgress}  key="general" apiKey={apiKey}pageSize={6} country='in' category="general" lang="en"/>}></Route>
+     <Route exact path='/sports' element={<News setProgress={setProgress}  key="sports" apiKey={apiKey} pageSize={6} country='in' category="sports" lang="en"/>}></Route>
+     <Route exact path='/technology' element={<News setProgress={setProgress}  key="technology" apiKey={apiKey} pageSize={6} country='in' category="technology" lang="en"/>}></Route>
+     <Route exact path='/business' element={<News setProgress={setProgress}  key="business" apiKey={apiKey} pageSize={6} country='in' category="business" lang="en"/>}></Route>
+     <Route exact path='/entertainment' element={<News setProgress={setProgress}  key="entertainment" apiKey={apiKey} pageSize={6} country='in' category="entertainment" lang="en"/>}></Route>
+     <Route exact path='/health' element={<News setProgress={setProgress}  key="health"  apiKey={apiKey} pageSize={6} country='in' category="health" lang="en"/>}></Route>
+     <Route exact path='/science' element={<News setProgress={setProgress}  key="science" apiKey={apiKey} pageSize={6} country='in' category="science" lang="en"/>}></Route>
+     
+     
+      </Routes>
+      </Router>
     </>
   )
 }
