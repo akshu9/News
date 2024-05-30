@@ -73,7 +73,7 @@ const fetchMoreData = async () => {
         const fetchData = async () => {
                 const proxyUrl = "https://cors-anywhere.herokuapp.com/"
                 props.setProgress(10)
-                const response=await fetch(`https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=${props.lang}&country=${props.country}&max=38&apikey=530b3761c7992af4b4e71bb5a4d263ca`)
+                const response=await fetch(`https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=${props.lang}&country=${props.country}&max=38&apikey=${props.apiKey}`)
                 //const response = await fetch(`${proxyUrl}https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`);
                 //const response=await fetch("SampleOutput.json")
                 setLoading(true)
