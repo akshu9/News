@@ -11,7 +11,7 @@ function App() {
   const[progress,setProgress]=useState(1)
   const apiKey=import.meta.env.VITE_REACT_NEWSAPI_KEY
   //const apiKey = import.meta.env.VITE_REACT_APP_NEWSAPI_KEY
-  //console.log('API Key:', apiKey);
+  console.log('API Key:', apiKey);
   
  
   return (
